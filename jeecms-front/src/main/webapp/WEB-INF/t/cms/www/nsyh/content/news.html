@@ -1,0 +1,47 @@
+[#include "../include/toplink.html" /]
+
+<body>
+[#include "../include/header.html" /]
+<div class="ns_list_content">
+	<div class="ns_list_contenta">
+	
+
+<div class="ns_list_right" style="width:1100px;min-height:600px;">
+	<div class="ns_list_righta" style="width:1098px;">
+		<h2>您现在的位置 ：<a href="#">首页</a> > [#list content.channel.nodeList as n]<a target="_blank" href="${n.url}"
+					 class="black Semilight">${n.name}</a>[#if n_has_next] >
+					[/#if][/#list] ></h2>
+		<h2 style="float: right; margin-right: 15px;">&lt;&lt;</h2>
+		<div class="clear"></div>
+	</div>
+	<h3>${content.title}</h3>
+	<h3 style="color: #8b8b8b; font-size: 12px; border-bottom: #cfcfcf dashed 1px;">日期：${content.releaseTime!}　来源：${content.origin!'本站原创'}</h3>
+	<div class="ns_list_rightc">
+		<p>${txt!}</p>
+	</div>
+</div>
+<div class="clear"></div>
+	</div>
+</div>
+
+[#include "../include/footer.html" /]
+
+<script type="text/javascript">
+$(".leftsidebar_box dt").css({"background":"images/ht_01.jpg"});
+$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+$(function(){
+	$(".leftsidebar_box dd").hide();
+	$(".leftsidebar_box dt").click(function(){
+		$(".leftsidebar_box dt").css({"background":"images/ht_01.jpg"})
+		$(this).css({"background":"images/ht_01.jpg"});
+		$(this).parent().find('dd').removeClass("menu_chioce");
+		$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+		$(this).parent().find('img').attr("src","images/left/select_xl.png");
+		$(".menu_chioce").slideUp(); 
+		$(this).parent().find('dd').slideToggle();
+		$(this).parent().find('dd').addClass("menu_chioce");
+	});
+})
+</script>
+</body>
+</html>

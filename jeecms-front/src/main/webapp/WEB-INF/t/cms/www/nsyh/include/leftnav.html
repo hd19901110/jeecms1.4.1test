@@ -1,0 +1,50 @@
+<div class="ns_list_left">
+	<h2><a href="${channel.url!}">${channel.name!}</a></h2>
+
+<div class="ns_list_lefta">
+	<div class="list">
+	<ul class="yiji">
+             
+	     [@cms_channel_list parentId=channel.id]
+               [#list tag_list as c] 
+             [#if c.child?size>0]
+                 <li><a class="inactive">${c.name}</a>
+            [#else]
+                 <li><a href="${c.url}" class="inactive">${c.name}</a>
+            [/#if]
+              <ul style="display: none"  >
+                                [@cms_channel_list parentId=c.id] 
+                                 [#list tag_list as c1] 
+                                             
+                                           
+                                [#if  c1.child?size>0]
+	                             
+                                    <li><a class="inactive active">${c1.name}</a>
+
+				 [#else]
+				      <li><a href="${c1.url}" class="inactive active">${c1.name}</a></li>
+				[/#if]
+                                [#if c1??] 
+                                <ul>
+                                        
+                                        [@cms_channel_list parentId=c1.id] 
+                                          [#list tag_list as c2] 
+      
+                                                 <li><a href="${c2.url}">•&nbsp;${c2.name}</a></li>
+                                        
+                                        [/#list]
+                                        [/@cms_channel_list] 
+                                         
+				</ul>
+                               [/#if]
+                                 [/#list] 
+                                [/@cms_channel_list] 
+				
+		</ul>
+		</li>
+                [/#list] 
+                 [/@cms_channel_list] 
+	</ul>
+</div>
+</div>
+</div>

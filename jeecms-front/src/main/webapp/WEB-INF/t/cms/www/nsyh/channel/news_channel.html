@@ -1,0 +1,140 @@
+[#include "../include/channel_toplink.html" /]
+</head>
+
+<body>
+[#include "../include/header.html" /]
+<div class="ns_list_content"> 
+	<div class="ns_list_contenta">
+	[#include "../include/toppic.html" /]
+[#include "../include/leftnav.html" /]
+<div class="ns_list_right">
+	<div class="ns_list_righta">
+		<h2>您现在的位置 ：<a href="${base}/">首页</a> >[#list channel.nodeList as n]<a href="${n.url}" target="_blank">${n.name}</a>[#if n_has_next] > [/#if][/#list]</h2>
+		<h2 style="float: right; margin-right: 15px;">&lt;&lt;</h2>
+		<div class="clear"></div>
+	</div>
+	<div style="margin-top: 25px;" class="leftsidebar_box">
+	    <div class="ns_list_rightb_k t1">
+	      	<dl class="ns_list_rightb ">
+				<dt onClick="changeImage()"><img   class="shakeimage" onMouseover="shake(this,'onmouseout')"  src="${res}/images/ns_07.png" width="100" height="80" alt=""/><p>储蓄</p></dt>
+				<span class="tc">
+					[@cms_channel_list parentId=101] 
+						[#list tag_list as c] 
+						<dd><a href="${c.url}">${c.name}</a></dd> 
+						[/#list] 
+					[/@cms_channel_list] 
+				</span>
+			</dl>
+		</div>
+	    <div class="ns_list_rightb_k t2">
+			<dl class="ns_list_rightb">
+				<dt onClick="changeImage()"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_08.png" width="100" height="80" alt=""/><p>贷款</p></dt>
+				<span class="tc">
+					[@cms_channel_list parentId=102] 
+						[#list tag_list as c] 
+						<dd><a href="${c.url}">${c.name}</a></dd> 
+						[/#list] 
+					[/@cms_channel_list] 
+					
+				</span>
+			</dl>    
+		</div>
+       	<div class="ns_list_rightb_k">
+		    <dl class="ns_list_rightb">
+				<dt onClick="changeImage()"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_09.png" width="100" height="80" alt=""/><p>理财</p></dt>
+				<span class="tc">
+					[@cms_channel_list parentId=103] 
+						[#list tag_list as c] 
+						<dd><a href="${c.url}">${c.name}</a></dd> 
+						[/#list] 
+					[/@cms_channel_list] 
+				</span>
+			</dl>
+		</div>
+       	<div class="ns_list_rightb_k">
+		    <dl class="ns_list_rightb">
+				<dt onClick="changeImage()"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_10.png" width="100" height="80" alt=""/><p>贵金属</p></dt>
+				<span class="tc">
+					[@cms_channel_list parentId=104] 
+						[#list tag_list as c] 
+						<dd><a href="${c.url}">${c.name}</a></dd> 
+						[/#list] 
+					[/@cms_channel_list] 
+				</span>
+			</dl>
+		</div>
+		<div class="ns_list_rightb_k">
+			<dl class="ns_list_rightb">
+				<dt onClick="changeImage()"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_11.png" width="100" height="80" alt=""/><p>保险</p></dt>
+				<span class="tc">
+					[@cms_channel_list parentId=105] 
+						[#list tag_list as c] 
+						<dd><a href="${c.url}">${c.name}</a></dd> 
+						[/#list] 
+					[/@cms_channel_list] 
+				</span>
+			</dl>
+		</div>
+		<div class="ns_list_rightb_k">
+			<dl class="ns_list_rightb">
+			<dt onClick="changeImage()"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_12.png" width="100" height="80" alt=""/><p>便利金融</p></dt>
+			<span class="tc">
+				[@cms_channel_list parentId=106] 
+						[#list tag_list as c] 
+						<dd><a href="${c.url}">${c.name}</a></dd> 
+						[/#list] 
+					[/@cms_channel_list] 
+			</span>
+			</dl>
+		</div>
+              <div class="ns_list_rightb_k">
+		    <dl class="ns_list_rightb">
+				<dt><a href="${base}/nxyyw.jhtml"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_13.png" width="100" height="80" alt=""/><p>农信银业务</p></a></dt>
+				
+				
+			</dl>
+		</div>
+               <div class="ns_list_rightb_k">
+		    <dl class="ns_list_rightb">
+				<dt><a href="${base}/fxqzs.jhtml"><img class="shakeimage" onMouseover="shake(this,'onmouseout')" src="${res}/images/ns_180.png" width="100" height="80" alt=""/><p>反洗钱知识</p></a></dt>
+				
+			</dl>
+		</div>
+		  <div class="clear"></div>
+			</div>
+</div>
+<div class="clear"></div>
+	</div>
+</div>
+
+[#include "../include/footer.html" /]
+
+<script type="text/javascript">
+
+
+$(function(){
+	$(".leftsidebar_box dd").hide();
+	$(".leftsidebar_box dt").click(function(){
+
+	
+		$(this).parent().find('dd').removeClass("menu_chioce");
+	
+		$(".menu_chioce").slideUp(); 
+		$(this).parent().find('dd').slideToggle();
+		$(this).parent().find('dd').addClass("menu_chioce");
+	});
+})
+</script>
+
+<script language="JavaScript1.2"> 
+var typ=["marginTop:35px;","marginLeft"],rangeN=10,timeout=20; 
+function shake(o,end){ 
+var range=Math.floor(Math.random()*rangeN); 
+var typN=Math.floor(Math.random()*typ.length); 
+o["style"][typ[typN]]=""+range+"px"; 
+var shakeTimer=setTimeout(function(){shake(o,end)},timeout); 
+o[end]=function(){clearTimeout(shakeTimer)}; 
+} 
+</script> 
+</body>
+</html>

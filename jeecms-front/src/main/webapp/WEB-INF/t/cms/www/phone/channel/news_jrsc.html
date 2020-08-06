@@ -1,0 +1,60 @@
+[#include "../include/toplink.html" /]
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html"]
+[#include "../include/toppic.html"]
+<h4 class="light assertive-bg" style="margin: 0px 0px; font-size: 14px; line-height: 30px; padding-left: 10px;">金融市场</h4>  
+    <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/tyyw.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-14 color01" style="font-size: 50px;"></i>
+    		<p>同业业务</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/txyw.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-23 color02" style="font-size: 50px;"></i>
+    		<p>投行业务</p>
+    	</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+   	  	<a href="${base}/pjyw.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-22 color03" style="font-size: 50px;"></i>
+    		<p>票据业务</p>
+    	</a>
+    	</div>
+     
+    <div class="col bdr-r">
+   	  	<a href="${base}/lcgg.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-17 color02" style="font-size: 50px;"></i>
+    		<p>理财公告</p>
+    	</a>
+    	</div>
+   	
+	
+	
+ </div> 
+         
+</ion-content>
+[#include "../include/footer.html"]
+[#include "../include/nav.html"]
+
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

@@ -1,0 +1,61 @@
+[#include "../include/toplink.html"/]
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html" /]
+
+[#include "../include/toppic.html"]
+<h4 class="light assertive-bg" style="margin: 0px 0px; font-size: 14px; line-height: 30px; padding-left: 10px;">今日农商</h4>  
+    <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/gyns.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-25 color01" style="font-size: 50px;"></i>
+    		<p>关于农商</p>
+    			</a>
+    	</div>
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/tzzgxx.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-5 color02" style="font-size: 48px;"></i>
+    		<p>投资者关系</p>
+    			</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+   	  	<a href="${base}/jcns.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-27 color03" style="font-size: 50px;"></i>
+    		<p>精彩农商</p>
+    			</a>
+    	</div>
+    
+   	<div class="col bdr-r">
+   	  	<a href="${base}/jrfwsfbz/567.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-24 color03" style="font-size: 50px;"></i>
+    		<p>金融服务收费标准</p>
+    			</a>
+    	</div>
+    
+   	<div class="col">
+   		 
+    	</div>
+	
+	
+ </div> 
+     
+               
+</ion-content>
+[#include "../include/footer.html"]
+[#include "../include/nav.html"]
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

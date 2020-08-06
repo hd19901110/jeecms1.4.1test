@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>包头农商银行</title>
+<link href="${res}/css/kf.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${res}/js/jQuery.1.9.1.js" ></script>
+ <script>
+//delay延迟时间（毫秒）
+
+// 	$("input[name=keyword]").autocomplete({
+// 		 source: "${base}/content/search",
+// 		 minLength: 2,
+// 		 max:5,
+// 		 delay:400,
+// 		 autoFocus: true,
+// 		 select: function(e, ui) {
+// 			 $("input[name='q']").val(ui.item.value);
+// 			 $("#searchForm").submit();
+// 		 }
+// 	});
+// function qkeypress(){
+// 	var q=$("input[name=keyword]");
+// 	if(q.val().trim()!=""){
+// 		$("input[name=keyword]").autocomplete("enable");
+// 	}else{
+// 		$("input[name=keyword]").autocomplete("disable");
+// 	}
+// }
+var listData = [];
+var pageNos = 1;
+var keyword = "${keyword!}";
+search();
+
+function clickSearch(pageNos) {
+	this.pageNos = pageNos;
+	search();
+}
+
+function formSearch() {
+	this.pageNos = 1;
+	this.keyword = $('#searchValue').val();
+	search();
+
+}
+
+function search() {
+	if(keyword == ""){
+		keyword = $('#searchValue').val();
+	}
+	$.get("${base}/content/search",{
+		"siteId": "",
+        "channelIds": "",
+        "searchPos": "",
+        "keyCondition": "",
+        "keyword": keyword,
+        "typeIds": "",
+        "tagIds": "",
+        "timeStage": "",
+        "releaseTimeBegin": "",
+        "releaseTimeEnd": "",
+        "issueOrg": "",
+        "issueYear": "",
+        "issueNum": "",
+        "isTop": "",
+        "releaseApp": "",
+        "releaseMiniprogram": "",
+        "oderBy": 27,
+        "page": pageNos,
+        "size": 7
+	}, function(data) {
+		listData = data.content;
+		var html = "<h4>以下是您关注的问题，请点击查看</h4>";
+		html += "<ul class='ns_kf_k08'>";
+		for(var i=0;i<listData.length;i++){
+			html += "<li><span class='data'>·<a href='" + listData[i].url + "' target='_blank'>" + 
+			listData[i].title + "</a></span><span class='date'> " + listData[i].releaseTime + " </span></li>";
+		}
+		html += "<div style='clear:both'></div><div class='pagesite'></div>";
+		//分页
+		var paging = "<div class='page-large'><div style='display:inline-block;'>";
+		if(!data.first) {
+			paging += "<a href='#' class='prev-page' onclick='clickSearch(" + (pageNos - 1) + ")'></a>";
+		}
+		if(data.totalPages > 5) {
+			if(pageNos <= 3) {
+				for(var page = 1; page <= 5; page++) {
+					if(page == pageNos) {
+						paging += "<a class='Num on' href='#'' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					} else {
+						paging += "<a class='Num' href='#' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					}
+				}
+				paging += "<a class='Num none'>...</a>";
+				if(data.totalPages == pageNos) {
+					paging += "<a class='Num on' href='#'' onclick='clickSearch(" + data.totalPages + ")'>" + data.totalPages + "</a>";
+				} else {
+					paging += "<a class='Num' href='#' onclick='clickSearch(" + data.totalPages + ")'>" + data.totalPages + "</a>";
+				}
+			} else if(pageNos>data.totalPages - 3) {
+				if (1 == pageNos) {
+					paging += "<a class='Num on' href='#' onclick='clickSearch(1)'>1</a>";
+				} else {
+					paging += "<a class='Num' href='#' onclick='clickSearch(1)'>1</a>";
+				}
+				paging += "<a class='Num none'>...</a>";
+				for(var page = data.totalPages-4; page <= data.totalPages; page++) {
+					if (page==pageNos) {
+						paging += "<a class='Num on' href='#' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					} else {
+						paging += "<a class='Num' href='#' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					}
+				}
+			} else {
+				if(1 == pageNos) {
+					paging += "<a class='Num on' href='#' onclick='clickSearch(1)'>1</a>";
+				} else {
+					paging += "<a class='Num' href='#' onclick='clickSearch(1)'>1</a>";
+				}
+				paging += "<a class='Num none'>...</a>";
+				for(var page = pageNos - 2; page <= pageNos + 2; page++) {
+					if(page == pageNos) {
+						paging += "<a class='Num on' href='#' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					} else {
+						paging += "<a class='Num' href='#' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					}
+				}
+				paging += "<a class='Num none'>...</a>";
+				if(data.totalPages == pageNos) {
+					paging += "<a class='Num on' href='#' onclick='clickSearch(" + data.totalPages + ")'>" + data.totalPages + "</a>";
+				} else {
+					paging += "<a class='Num' href='#' onclick='clickSearch(" + data.totalPages + ")'>" + data.totalPages + "</a>";
+				}
+				 
+			}
+		} else {
+			if(data.totalPages == 0) {
+				paging += "<a class='Num on' href='#' onclick='clickSearch(1)'>1</a>";
+			} else {
+				for(var page = 1; page <= data.totalPages; page++) {
+					if(page == pageNos) {
+						paging += "<a class='Num on' href='#'' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					} else {
+						paging += "<a class='Num' href='#'' onclick='clickSearch(" + page + ")'>" + page + "</a>";
+					}
+				}
+			}
+			
+		}
+		if(!data.last) {
+			paging += "<a class='next-page' href='#' onclick='clickSearch(" + (pageNos + 1) + ")'</a>";
+		}
+		paging += "</div></div>";
+		html += paging;
+		$("#result").html(html);
+	});
+}
+
+
+
+</script>
+</head>
+
+<body>
+<div class="ns_kf_k">
+	<div class="ns_kf_k01">
+		<h2></h2>
+		<span class="gd"><a href="${base}/wlkf.jhtml">首页</a> <a href="javascript:history.go(-1)">返回</a></span>
+	</div>
+	<div class="ns_kf_k02">
+		<div id="result" class="ns_kf_k03" style="margin-top: 0px; height: 270px;">
+            [#if q??]
+  		    [@cms_lucene_page q=q channelId=channelId descLen='100' append='...' count='7']
+	  		<h4>以下是您关注的问题，请点击查看</h4>
+		  <ul class="ns_kf_k08">
+		  [#list tag_list as s]
+				<li><span class="data">·<a href="${s.ctgUrl}" target="_blank">${s.title?replace('${q!}', "${q!}")}  </a></span><span class="date"> ${s.releaseDate} </span></li>
+                   [/#list]
+             <div style="clear:both"></div>
+            <div class="pagesite"></div>
+            [#include "../include/page.html"]
+            [/@cms_lucene_page]	
+            [/#if]  
+		  </ul>
+		</div>
+	  <div class="ns_kf_k04">
+	     <form action="${base}/search.htm" id="searchForm">
+			<input type="text" name="keyword" id="searchValue" value=""  class="ns_kf_k05">
+		  	<input type="reset" id="resetValue" class="ns_kf_k06" value="清空">
+		    <input type="button" onclick="formSearch()" class="ns_kf_k06" value="发送">
+		  </form>
+	  </div>
+	</div>
+</div>
+</body>
+</html>

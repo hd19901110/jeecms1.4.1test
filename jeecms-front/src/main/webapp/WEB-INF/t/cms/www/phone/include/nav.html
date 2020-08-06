@@ -1,0 +1,26 @@
+</ion-side-menu-content>
+	<ion-side-menu side="left" width="160">
+		<ion-content  style="background-color: #f6f6f6;" >
+<div style=" height: 2px;background-color: #d6000f;"></div>
+			<ul class="list">
+ [@cms_channel_list]
+        <a href="${base}/">
+       <li class="item item-icon-left ">
+<i class="icon ion-android-arrow-dropright"></i><h2>首页</h2>
+
+       </li></a>
+        
+        [#list tag_list as c]
+        [#if c_index<6]
+         <a href="${c.url}"> 
+          <li class="item item-icon-left">
+	     <i class="icon ion-android-arrow-dropright"></i><h2>${c.name}</h2>
+            
+	   </li>
+         </a>
+        [/#if]
+        [/#list]
+[/@cms_channel_list]
+			</ul>
+	</ion-side-menu>
+	</ion-side-menus>

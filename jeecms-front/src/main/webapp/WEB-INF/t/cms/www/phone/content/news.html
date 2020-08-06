@@ -1,0 +1,36 @@
+[#include "../include/toplink.html"]
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html" /]
+<ion-content>
+
+<div class="card" style="width: 100%; margin: 0px; margin-bottom: 5px;">
+<div class="row">
+<div class="col-28" style="margin: 0 auto; padding: 0px 80px;">
+  <img src="/${mobileRes!}/images/logo.jpg" style=" width: 100%;"/>
+    </div>
+ </div> 
+
+		
+    </div>
+<h5 class="title" align="center">${content.title} </h5>
+<h6 class="title" align="center" style="color:#333;">日期：${content.releaseTime!}　来源：${content.origin!'本站原创'}</h6>
+<div class="ab" style="color:#666;">
+<p >${txt!}</p>
+
+</div>
+</ion-content>
+[#include "../include/footer.html" /]
+[#include "../include/nav.html" /]
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

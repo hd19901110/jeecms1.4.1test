@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: jeecms-form
+Implementation-Version: x1.4.1
+Built-By: zhaohuis
+Implementation-Vendor-Id: com.jeecms
+Build-Jdk: 1.8.0_161
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/jeecms-parent/jeecms-form
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>包头农商银行</title>
+<link href="${res}/css/kf.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${res}/js/jQuery.1.9.1.js" ></script>
+<script type="text/javascript">
+ window.onload = function() {
+  var show = document.getElementById("show");
+  setInterval(function() {
+   var time = new Date();
+   // 程序计时的月从0开始取值后+1
+   var m = time.getMonth() + 1;
+   var t = time.getHours() + ":"
+     + time.getMinutes() + ":" + time.getSeconds();
+   show.innerHTML = t;
+  }, 1000);
+ };
+</script>
+ <script>
+//delay延迟时间（毫秒）
+$(function() {
+	$("input[name=q]").autocomplete({
+		 source: "${base}/search/v_ajax_list.jspx",
+		 minLength: 2,
+		 max:5,
+		 delay:400,
+		 autoFocus: true,
+		 select: function(e, ui) {
+			 $("input[name='q']").val(ui.item.value);
+			 $("#searchForm").submit();
+		 }
+	});
+});
+function qkeypress(){
+	var q=$("input[name=q]");
+	if(q.val().trim()!=""){
+		$("input[name=q]").autocomplete("enable");
+	}else{
+		$("input[name=q]").autocomplete("disable");
+	}
+}
+</script>
+</head>
+
+<body>
+<div class="ns_kf_k">
+	<div class="ns_kf_k01">
+		<h2>网络客服</h2>
+	</div>
+	<div class="ns_kf_k02">
+		<h3>网络客服   <span id="show" style="color: #00639f;"></span></h3>
+		<h3>尊敬的客户，您好！请简要输入您的问题，我会耐心为您解答。</h3>
+		<div class="ns_kf_k03">
+			<h4>常见问题</h4>
+		  <ul class="ns_kf_k07">
+				<li><a href="#" onclick="getMatter()">个人金融 <input type="hidden" id="a1" value="个人金融"></a></li>
+				<li><a href="#" onclick="getMatter1()">企业金融<input type="hidden" id="a2" value="企业金融"></a></a></li>
+				<li><a href="#" onclick="getMatter2()">金融市场<input type="hidden" id="a3" value="金融市场"></a></a></li>
+			</ul>
+		</div>
+	  <div class="ns_kf_k04">
+	     <form action="${base}/search.htm" id="searchForm">
+			<input type="text" name="keyword" id="searchValue" value="" class="ns_kf_k05" placeholder="请输入关键字">
+		  	<input type="reset" class="ns_kf_k06" value="清空">
+		    <input type="submit" class="ns_kf_k06" value="发送">
+		  </form>
+	  </div>
+	</div>
+</div>
+<script>
+function getMatter(){
+      var data=$("#a1").val();
+      var getdata=$("#searchValue").val(data);
+      if(getdata!=null  || getdata!=''){
+            $("#searchForm").submit();
+      }
+
+}
+
+function getMatter1(){
+     var data1=$("#a2").val();
+     var getdata1=$("#searchValue").val(data1);
+     if(getdata1!=null  || getdata1!=''){
+            $("#searchForm").submit();
+      }
+}
+
+function getMatter2(){
+     var data2=$("#a3").val();
+     var getdata2=$("#searchValue").val(data2);
+     if(getdata2!=null  || getdata2!=''){
+            $("#searchForm").submit();
+      }
+}
+
+</script>
+</body>
+</html>

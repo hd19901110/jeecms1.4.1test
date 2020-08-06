@@ -1,0 +1,25 @@
+<ion-content overflow-scroll="true" >
+<div class="swiper-container" style="margin-top:43px;">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><a href="${base}/mldxlcp.jhtml"><img src="${mobileRes!}/images/02.jpg"> </a> </div><div class="swiper-slide"><a href="${base}/lylc.jhtml"> <img src="${mobileRes!}/images/01.jpg">  </a></div>
+            <!-- <div class="swiper-slide"><a href="${base}/fy.jhtml"><img src="${mobileRes!}/images/03.jpg"> </a> </div> -->
+            <div class="swiper-slide"><a href="${base}/jcns.jhtml"> <img src="${mobileRes!}/images/04.jpg">  </a></div>
+
+        </div>
+
+        <div class="swiper-pagination"></div>
+
+    </div>
+   <script src="${mobileRes!}/js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: 2500,
+        autoplayDisableOnInteraction: false
+    });
+    </script>

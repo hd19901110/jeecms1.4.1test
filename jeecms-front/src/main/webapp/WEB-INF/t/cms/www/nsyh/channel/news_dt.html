@@ -1,0 +1,141 @@
+[#include "../include/toplink.html" /]
+<!--引用百度地图API-->
+<style type="text/css">
+    html,body{margin:0;padding:0;}
+    #allmap{width:100%;height:500px;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=GKSZ3uPqYgR0XH5TWHNCedRY"></script>
+<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+<body>
+[#include "../include/header.html" /]
+<div class="ns_list_content">
+	<div class="ns_list_contenta">
+		<div class="ns_list_rightc">
+			<select >
+				<option >包头市</option>
+			</select>
+			<select name="title" id="selectid" onchange="onchangeCode()">
+                        <option value="" selected="selected">请选择</option>
+		    	<option value="青山区">青山区</option>
+		    	<option value="昆都仑区">昆都仑区</option>
+		    	<option value="东河区">东河区</option>
+		    	<option value="石拐区">石拐区</option>
+		    	<option value="九原区">九原区</option>
+		    	<option value="固阳县">固阳县</option>
+		    	<option value="土默特右旗">土默特右旗</option>
+		    	<option value="白云鄂博市">白云鄂博市</option>
+		    	<option value="包头稀土高新技术产业开发区">包头稀土高新技术产业开发区</option>
+		    </select>
+			<input type="text" name="searchCode" id="searchCode" >
+			<input type="submit" value="查询" onClick="searchCode()">
+			<div id="allmap"></div>
+		</div>
+	</div>
+	<div class="clear"></div>
+</div>
+
+[#include "../include/footer.html" /]
+</body>
+</html>
+<script type="text/javascript">
+	// 百度地图API功能	
+	map = new BMap.Map("allmap");
+	map.centerAndZoom(new BMap.Point(109.879096,40.65944), 12);
+
+	setTimeout(function(){
+		map.setZoom(14);   
+	}, 2000);  //2秒后放大到14级
+       var local = new BMap.LocalSearch(map, {
+		renderOptions: {map: map, panel: "r-result"}
+	});
+        setTimeout(function(){
+		map.setZoom(14);   
+	}, 2000);
+	map.enableScrollWheelZoom(true);
+	var data_info = [
+          [109.878182,40.660699,"包头农村商业银行股份有限公司营业部<br/>0472-6182146<br/><br/>"]
+		 ,[110.335732,40.57491,"包头农村商业银行股份有限公司东园支行<br/>0472-4995251<br/>"]
+		 ,[110.258791,40.571896,"包头农村商业银行股份有限公司古城湾支行<br/>0472-4905841<br/>"]
+		 ,[110.156372,40.573787,"包头农村商业银行股份有限公司古城湾支行<br/>0472-4190108<br/>"]
+		 ,[110.064882,40.577959,"包头农村商业银行股份有限公司前明支行<br/>0472-7154047<br/>"]
+		 ,[110.975971,40.599155,"包头农村商业银行股份有限公司兴胜支行<br/>0472-7918159<br/>"]
+		 ,[110.989983,40.633062,"包头农村商业银行股份有限公司后营子支行<br/>0472-4861884<br/>"]
+		 ,[110.017881,40.614977,"包头农村商业银行股份有限公司石拐支行<br/>0472-8713065<br/>"]
+		 ,[110.277582,40.677642,"包头农村商业银行股份有限公司三道沙河支行<br/>0472-7141142<br/>"]
+		 ,[109.978394,40.642129,"包头农村商业银行股份有限公司九原支行<br/>0472-7146112<br/>"]
+		 ,[109.974543,40.608789,"包头农村商业银行股份有限公司商会支行<br/>0472-2808104<br/>"]
+		 ,[109.888739,40.655916,"包头农村商业银行股份有限公司金创支行<br/>0472-7103893<br/>"]
+		 ,[110.006351,40.592218,"包头农村商业银行股份有限公司巴彦塔拉支行<br/>0472-4856236<br/>"]
+		 ,[110.06034,40.59147,  "  包头农村商业银行股份有限公司东门外支行<br/>0472-4357557<br/>"]
+		 ,[110.050055,40.600572,"包头农村商业银行股份有限公司北梁支行<br/>0472-4172981<br/>"]
+		 ,[110.039257,40.576911,"包头农村商业银行股份有限公司站北路支行<br/>0472-4176950<br/>"]
+		 ,[110.041619,40.587958,"包头农村商业银行股份有限公司环城路支行<br/>0472-4146392<br/>"]
+		 ,[110.073832,40.574588,"包头农村商业银行股份有限公司佳美支行<br/>0472-4359686<br/>"]
+		 ,[109.91872,40.590932, " 包头农村商业银行股份有限公司滨河支行<br/>0472-4995251<br/>"]
+		 ,[109.983258,40.552905,"包头农村商业银行股份有限公司交界营子支行<br/>0472-7916408<br/>"]
+		 ,[109.87607,40.679003, "包头农村商业银行股份有限公司富强路支行<br/>0472-2890382<br/>"]
+		 ,[109.992365,40.596936,"包头农村商业银行股份有限公司五洋支行<br/>0472-7149836<br/>"]
+		 ,[109.984289,40.597703,"包头农村商业银行股份有限公司哈屯高勒支行<br/>0472-7148939<br/>"]
+		 ,[109.996573,40.603119,"包头农村商业银行股份有限公司铁西支行<br/>0472-7140423<br/>"]
+		 ,[109.903412,40.677806,"包头农村商业银行股份有限公司电厂路支行<br/>0472-3125046<br/>"]
+		 ,[109.884641,40.674851,"包头农村商业银行股份有限公司文化路支行<br/>0472-3109567<br/>"]
+		 ,[109.901966,40.658037,"包头农村商业银行股份有限公司科学路支行<br/>0472-6867007<br/>"]
+		 ,[109.900558,40.667019,"包头农村商业银行股份有限公司自由路支行<br/>0472-3637032<br/>"]
+		 ,[109.827101,40.647902,"包头农村商业银行股份有限公司林荫南路支行<br/>0472-2131065<br/>"]
+		 ,[109.977468,40.604941,"包头农村商业银行股份有限公司健康路支行<br/>0472-7141134<br/>"]
+		 ,[110.033778,40.583972,"包头农村商业银行股份有限公司东河支行<br/>0472-4150165<br/>"]
+		 ,[109.827694,40.663517,"包头农村商业银行股份有限公司钢铁大街支行<br/>0472-2139386<br/>"]
+		 ,[110.027949,40.61751, "包头农村商业银行股份有限公司包白支行<br/>0472-4140887<br/>"]
+		 ,[110.071225,40.561209,"包头农村商业银行股份有限公司南海支行<br/>0472-4602841<br/>"]
+		 ,[110.277582,40.677642,"包头农村商业银行股份有限公司五当召支行<br/>0472-8712105<br/>"]
+		 ,[110.196577,40.570408,"包头农村商业银行股份有限公司糖厂支行<br/>0472-4190973<br/>"]
+		 ,[110.306967,40.582678,"包头农村商业银行股份有限公司东园分理处<br/>0472-4992046<br/>"]
+		 ,[110.388543,40.571876,"包头农村商业银行股份有限公司公积板分理处<br/>0472-4992049<br/>"]
+		 ,[110.27373,40.543606, "包头农村商业银行股份有限公司土合气分理处<br/>0472-4908325<br/>"]
+		 ,[110.152973,40.571979,"包头农村商业银行股份有限公司铝厂分理处<br/>0472-4192303<br/>"]
+		 ,[110.140152,40.571232,"包头农村商业银行股份有限公司古城湾分理处<br/>0472-4193345<br/>"]
+		 
+		 ];
+	var opts = {
+				width : 250,     // 信息窗口宽度
+				height: 60,     // 信息窗口高度
+				
+				enableMessage:true//设置允许信息窗发送短息
+			   };
+	for(var i=0;i<data_info.length;i++){
+		var marker = new BMap.Marker(new BMap.Point(data_info[i][0],data_info[i][1]));  // 创建标注
+		var content = data_info[i][2];
+		map.addOverlay(marker);               // 将标注添加到地图中
+		addClickHandler(content,marker);
+	}
+	function addClickHandler(content,marker){
+		marker.addEventListener("click",function(e){
+			openInfo(content,e)}
+		);
+	}
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+	function openInfo(content,e){
+		var p = e.target;
+		var point = new BMap.Point(p.getPosition().lng, p.getPosition().lat);
+		var infoWindow = new BMap.InfoWindow(content,opts);  // 创建信息窗口对象 
+		map.openInfoWindow(infoWindow,point); //开启信息窗口
+	}
+function onchangeCode(){
+              var selectCode=$("#selectid").find("option:selected").val();
+              local.search("包头市"+selectCode+"农商银行");
+         }
+    function searchCode(){
+                    var SearchCode=$("#searchCode").val();
+                    if(SearchCode==null || SearchCode==''){
+                       
+                    }else{
+                           local.search(SearchCode);
+                     }
+                    
+         }
+</script>

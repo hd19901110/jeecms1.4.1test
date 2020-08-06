@@ -1,0 +1,91 @@
+[#include "../include/toplink.html" /]
+
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html"]
+
+[#include "../include/toppic.html"]
+<h4 class="light assertive-bg" style="margin: 0px 0px; font-size: 14px; line-height: 30px; padding-left: 10px;">企业金融</h4>  
+    <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/jcfw.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-5 color01" style="font-size: 50px;"></i>
+    		<p>基础服务</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/pj.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-1 color02" style="font-size: 50px;"></i>
+    		<p>票据</p>
+    			</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+   	  	<a href="${base}/gslc.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-2 color03" style="font-size: 50px;"></i>
+    		<p>公司理财</p>
+    			</a>
+    	</div>
+    
+    
+   	<div class="col">
+   		<a href="${base}/gyljr.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-7 color04" style="font-size: 50px;"></i>
+    		<p>供应链金融</p>
+    			</a>
+    	</div>
+	
+	
+ </div> 
+   <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/qydk.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-21 color01" style="font-size: 50px;"></i>
+    		<p>企业贷款</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/xqyjr.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-3 color02" style="font-size: 50px;"></i>
+    		<p>小企业金融</p>
+    	</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+  
+    	</div>
+    
+    
+   	<div class="col">
+   	
+    	</div>
+	
+	
+ </div>      
+</ion-content>
+[#include "../include/footer.html" /]
+[#include "../include/nav.html" /]
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

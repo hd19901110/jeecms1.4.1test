@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>包头农商银行</title>
+<link href="${res}/css/pc.css" rel="stylesheet" type="text/css">
+<link type="text/css" href="${res}/css/style.css" rel="stylesheet" />
+<link href="${res}/css/stylea.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${res}/js/jQuery.1.9.1.js" ></script>
+<link href="${res}/js/desktop.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="${res}/js/global.js"></script>
+<script type="text/javascript" src="${res}/js/common.js"></script>
+
+ <style type="text/css"> 
+  .black_overlay{  display: none;  position: absolute;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:9998;  -moz-opacity: 0.8;  opacity:.80;  filter: alpha(opacity=80);  } 
+ .white_content {  display: none;  position: absolute;  top: 20%;  left: 35%;  width: 530px;  height: 400px;     background-color: white;  z-index:9999;  overflow: auto;  }  </style> 
+  <script>
+	function add(){
+
+		document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block';
+		
+
+	}
+      
+	function closeIframe(){
+		document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none';
+		window.location.reload();
+		
+	}
+       
+</script> 
+<script type="text/javascript">
+
+function addEvent(obj,evtType,func,cap){
+    cap=cap||false;
+ if(obj.addEventListener){
+     obj.addEventListener(evtType,func,cap);
+  return true;
+ }else if(obj.attachEvent){
+        if(cap){
+         obj.setCapture();
+         return true;
+     }else{
+      return obj.attachEvent("on" + evtType,func);
+  }
+ }else{
+  return false;
+    }
+}
+function getPageScroll(){
+    var xScroll,yScroll;
+ if (self.pageXOffset) {
+  xScroll = self.pageXOffset;
+ } else if (document.documentElement  &&  document.documentElement.scrollLeft){
+  xScroll = document.documentElement.scrollLeft;
+ } else if (document.body) {
+  xScroll = document.body.scrollLeft;
+ }
+ if (self.pageYOffset) {
+  yScroll = self.pageYOffset;
+ } else if (document.documentElement  &&  document.documentElement.scrollTop){
+  yScroll = document.documentElement.scrollTop;
+ } else if (document.body) {
+  yScroll = document.body.scrollTop;
+ }
+ arrayPageScroll = new Array(xScroll,yScroll);
+ return arrayPageScroll;
+}
+function GetPageSize(){
+    var xScroll, yScroll;
+    if (window.innerHeight  &&  window.scrollMaxY) { 
+        xScroll = document.body.scrollWidth;
+        yScroll = window.innerHeight + window.scrollMaxY;
+    } else if (document.body.scrollHeight > document.body.offsetHeight){
+        xScroll = document.body.scrollWidth;
+        yScroll = document.body.scrollHeight;
+    } else {
+        xScroll = document.body.offsetWidth;
+        yScroll = document.body.offsetHeight;
+    }
+    var windowWidth, windowHeight;
+    if (self.innerHeight) {
+        windowWidth = self.innerWidth;
+        windowHeight = self.innerHeight;
+    } else if (document.documentElement  &&  document.documentElement.clientHeight) {
+        windowWidth = document.documentElement.clientWidth;
+        windowHeight = document.documentElement.clientHeight;
+    } else if (document.body) {
+        windowWidth = document.body.clientWidth;
+        windowHeight = document.body.clientHeight;
+    } 
+    if(yScroll < windowHeight){
+        pageHeight = windowHeight;
+    } else { 
+        pageHeight = yScroll;
+    }
+    if(xScroll < windowWidth){ 
+        pageWidth = windowWidth;
+    } else {
+        pageWidth = xScroll;
+    }
+    arrayPageSize = new Array(pageWidth,pageHeight,windowWidth,windowHeight) 
+    return arrayPageSize;
+}
+//脚本: AdMove.js
+var AdMoveConfig=new Object();
+AdMoveConfig.IsInitialized=false;
+AdMoveConfig.ScrollX=0;
+AdMoveConfig.ScrollY=0;
+AdMoveConfig.MoveWidth=0;
+AdMoveConfig.MoveHeight=0;
+AdMoveConfig.Resize=function(){
+    var winsize=GetPageSize();
+    AdMoveConfig.MoveWidth=winsize[2];
+    AdMoveConfig.MoveHeight=winsize[3];
+    AdMoveConfig.Scroll();
+}
+AdMoveConfig.Scroll=function(){
+    var winscroll=getPageScroll();
+    AdMoveConfig.ScrollX=winscroll[0];
+    AdMoveConfig.ScrollY=winscroll[1];
+}
+addEvent(window,"resize",AdMoveConfig.Resize);
+addEvent(window,"scroll",AdMoveConfig.Scroll);
+function AdMove(id){
+    if(!AdMoveConfig.IsInitialized){
+        AdMoveConfig.Resize();
+        AdMoveConfig.IsInitialized=true;
+    }
+    var obj=document.getElementById(id);
+    obj.style.position="absolute";
+    var W=AdMoveConfig.MoveWidth-obj.offsetWidth;
+    var H=AdMoveConfig.MoveHeight-obj.offsetHeight;
+    var x = W*Math.random(),y = H*Math.random();
+    var rad=(Math.random()+1)*Math.PI/6;
+    var kx=Math.sin(rad),ky=Math.cos(rad);
+    var dirx = (Math.random()<0.5?1:-1), diry = (Math.random()<0.5?1:-1);
+    var step = 1;
+    var interval;
+    this.SetLocation=function(vx,vy){x=vx;y=vy;}
+    this.SetDirection=function(vx,vy){dirx=vx;diry=vy;}
+    obj.CustomMethod=function(){
+        obj.style.left = (x + AdMoveConfig.ScrollX) + "px";
+        obj.style.top = (y + AdMoveConfig.ScrollY) + "px";
+        rad=(Math.random()+1)*Math.PI/6;
+        W=AdMoveConfig.MoveWidth-obj.offsetWidth;
+        H=AdMoveConfig.MoveHeight-obj.offsetHeight;
+        x = x + step*kx*dirx;
+        if (x < 0){dirx = 1;x = 0;kx=Math.sin(rad);ky=Math.cos(rad);} 
+        if (x > W){dirx = -1;x = W;kx=Math.sin(rad);ky=Math.cos(rad);}
+        y = y + step*ky*diry;
+        if (y < 0){diry = 1;y = 0;kx=Math.sin(rad);ky=Math.cos(rad);} 
+        if (y > H){diry = -1;y = H;kx=Math.sin(rad);ky=Math.cos(rad);}
+    }
+    this.Run=function(){
+        var delay = 10;
+        interval=setInterval(obj.CustomMethod,delay);
+        obj.onmouseover=function(){clearInterval(interval);}
+        obj.onmouseout=function(){interval=setInterval(obj.CustomMethod, delay);}
+    }
+}
+
+ </script>
+</head>
+<!--飘窗开始-->
+<div id="gg1" style="width:200px;height:112px; z-index:9999; position:relative; border:0px; background:none;">
+   <div>
+<div onclick="gg1.style.display='none';return false;" href="" style="cursor:pointer;">关闭</div>
+
+<!--<a href="http://www.bankbtb.com/rczp.jhtml" target="_blank"><img src="${res}/images/piaoxn.png" border="0"></a>-->
+
+<a href="${base}/rczp.jhtml" target="_blank"><img src="${res}/images/piaof.jpg" border="0"></a>
+
+
+</div>
+    </div>
+
+
+
+    <script type="text/javascript">
+  
+       var ad1=new AdMove("gg1");
+         ad1.Run();
+
+    </script>
+<!--飘窗结束-->
+<body>
+<script type="text/javascript" src="${res}/js/promotions.js"></script>
+
+<div id="light" class="white_content"> 
+    <a href="javascript:void(0)" onclick="closeIframe()" style="font-size: 14px; line-height: 30px; float: right; margin-right: 15px; color: #333;">关闭</a>
+<Iframe id="SelectCode" src="/wlkf.jhtml"; scrolling="no" frameborder="0" style="width: 512px; height: 400px; overflow-y: scroll"></iframe> 
+    </div>
+
+
+
+<div id="fade" class="black_overlay"> </div> 
+
+[#include "../include/header.html" /]
+<div class="ns_content">
+<div class="ns_k">
+	<div class="ns_k01">
+	  <div class="ns_k02">
+	    <div class="ns_k02a">
+			<div class="ns_k03">
+				<h2>网上银行</h2>
+			</div>
+			<div class="ns_k03a">
+				<div class="ns_k03b"><a href="https://ebank.nmgnxs.com.cn/pb_jump.html" target="_blank"><img src="${res}/images/ns_03.png" width="273" height="37" alt=""/></a>
+				<p>
+                                      <a href="" target="_blank">安全提示</a>
+                                     <a href="https://ebank.nmgnxs.com.cn:467/perbank/nxywizard/1990/NXYWizard_setup.exe" target="_blank">网银向导</a>
+                                      <a href="#" target="_blank">常见提示</a>
+                                </p>
+				</div>
+				<div class="ns_k03b"><a href="https://ebank.nmgnxs.com.cn/cb_jump.html" target="_blank"><img src="${res}/images/ns_04.png" width="273" height="37" alt=""/></a>
+				<p><a href="" target="_blank">功能演示</a><a href="#" target="_blank">下载中心</a><a href="#" target="_blank">安全</a></p>
+			  </div>
+			  	<div class="ns_k03b"><a href="http://wxbank.nongxinyin.com/weixinServer/htmlShow/1990001/download/bankDownloadBoth.html" target="_blank" ><img src="${res}/images/ns_05.png" width="273" height="37" alt=""/></a>
+				<p><a href="#" target="_blank">功能演示</a><a href="#" target="_blank">下载中心</a><a href="#" target="_blank">安全</a></p>
+			  </div>
+			</div>
+		</div>
+			  <div class="ns_k02a">
+			<div class="ns_k03">
+				<h2>理财公告</h2>
+				<span class="gd">
+					[@cms_channel id='242']
+					    <a href="${tag_bean.url}" >更多</a>
+					[/@cms_channel]  
+				</span>
+			</div>
+			<ul class="ns_k04">
+				[@cms_content_list count='2' titLen='15' orderBy='4' channelOption='1' channelId='242']
+				   [#list tag_list as a]
+				    <li><a href="${a.url}" title="${a.title}" >[@text_cut s=a.title len=titLen append=append/]</a></li>
+				   [/#list]
+				[/@cms_content_list]
+			</ul>
+			</div>
+                       <div class="ns_k02a">
+			<div class="ns_k03">
+				<h2>农商动态</h2>
+				<span class="gd">
+					[@cms_channel id='243']
+					    <a href="${tag_bean.url}" >更多</a>
+					[/@cms_channel]  
+				</span>
+			</div>
+			<ul class="ns_k04">
+				[@cms_content_list count='2' titLen='15' orderBy='4' channelOption='1' channelId='243']
+				   [#list tag_list as a]
+				    <li><a href="${a.url}" title="${a.title}" >[@text_cut s=a.title len=titLen append=append/]</a></li>
+				   [/#list]
+				[/@cms_content_list]
+			</ul>
+			</div>
+			<div style="margin: 8px 0px"><a href="${base}/mldxlcp.jhtml" target="_blank"><img src="${res}/images/ns_04.jpg" width="304" height="88" alt=""/></a></div>
+	  </div>
+	</div>
+</div>
+	<div class="slide banner" data-slide='{"action":"click","fn":"banner_ext","time":"2000"}'>
+<div class="ban_c album"><a href="${base}/mldxlcp.jhtml"><img src="${res}/images/02.jpg"  alt="麻利贷<br/>三天放款  免手续费"/></a></div>
+	<!--<div class="ban_c album"><a href="${base}/fy.jhtml"><img src="${res}/images/03.jpg" alt="丰盈储蓄<br/>定期储蓄 理财收益" /></a></div> -->
+<div class="ban_c album"><a href="${base}/lylc.jhtml"><img src="${res}/images/01.jpg"  alt="乐赢理财<br/>期限灵活 收益稳健"/></a></div>
+	<div class="ban_c album"><a href="${base}/jcns.jhtml"><img src="${res}/images/04b.jpg" alt="精彩农商<br/>选择农商 合作共赢" /></a></div>
+</div>
+<div class="wrap bann_ext">
+	<ul class="l frontCover">
+	</ul>
+</div>
+</div>
+<div style="position:relative; z-index:9999">
+<div class="ns_footer" >
+	<div class="ns_footera">
+		<p>
+			
+			<a href="${base}/wzsm.jhtml" >网站声明</a> |<a href="${base}/wzdt.jhtml"> 网站地图</a> | <a href="${base}/yqlj.jhtml" >友情链接</a> | <a href="${base}/lxwm/371.jhtml" >联系我们</a> | <a href="http://oa.bankbtb.cn" >OA系统</a><br/>
+          包头农商银行版权所有，未经协议授权，禁止下载使用。<br/>            
+ &nbsp;&nbsp;备案/许可证编号为：蒙ICP备17001966号<br/>
+                         		 		<a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=15020402000137" style="text-decoration:none;color:#939393;" ><img src="${res}/images/ba.png"/>蒙公网安备 15020402000137号</a>
+		</p>
+
+		
+		<div class="ns_footerb"><img src="${res}/images/ns_05a.jpg" width="65" height="63" alt=""/><p>公众号</p></div>
+<div class="ns_footerb"><img src="${res}/images/ns_05ewm.jpg" width="65" height="63" alt=""/><p>手机银行</p></div>
+		<div class="clear"></div>
+	</div>
+</div>
+</div>
+
+
+
+
+
+<script type="text/javascript" src="${res}/js/script.js"></script>
+</body>
+</html>

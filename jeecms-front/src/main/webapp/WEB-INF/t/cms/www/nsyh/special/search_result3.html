@@ -1,0 +1,47 @@
+[#include "../include/toplink.html"]
+<link href="/${res}/css/html5.css" rel="stylesheet" type="text/css"/>
+<link href="${resSys}/front.css" rel="stylesheet" type="text/css"/>
+<link href="${resSys}/jqueryUI/jquery.ui.css" rel="stylesheet" type="text/css"/>
+
+<body>
+[#include "../include/header.html"]
+<div class="ed_content">
+    <div class="w700 mt10" style="width:998px;margin-bottom:10px;margin:5px auto;float:none; background:#fff;">
+    	<div class="rim05" style="min-height:400px;">
+            <div class="LanMu01-2">
+                <div class="LanMu01-1"></div>
+                <span>搜索结果</span>
+                <div class="LanMu01-3"></div>
+            </div>
+            <div class="sousuoCon">
+            [#if q??]
+            [@cms_lucene_page q=q channelId=channelId descLen='100' append='...' count='10']
+            <div class="search_msg">
+            您搜索的<span class="red">“${input!}”</span>， 共有 <span class="red">${tag_pagination.totalCount!} 条</span> 查询结果，[@process_time/]
+            </div>
+            [#list tag_list as s]
+            <dl class="sslist">
+                <dt><span>[<a href="${s.ctgUrl}" target="_blank">${s.ctgName}</a>]</span>  <a href="${s.url}" title="${s.title}" target="_blank">
+             	${s.title?replace('${q!}', "<span style='color: red;'>${q!}</span>")}  
+                </a></dt>
+                <dd class="zy">  
+                  [#if s.txt??]
+                    [#assign bb=s.txt?replace("<(S*?)[^>]*>.*?|<.*? />","","ri")?replace("&nbsp;","","ri")/]
+                    [@text_cut s=bb?replace('${q!}', "<span style='color: red;'>${q!}</span>") len=descLen append=append/]
+                   [/#if]
+                </dd>
+                <dd>来源： <a href="${s.originUrl!}" target="_blank">${s.origin!'本站原创'}</a> &nbsp;&nbsp; 浏览次数：${s.views}次 &nbsp;&nbsp; 发布时间： ${s.releaseDate} </dd>
+            </dl>
+            [/#list]
+            <div class="pagesite">[@cms_pagination sysPage='1'/]</div>
+            [/@cms_lucene_page]	  
+            [/#if]
+            </div>
+        </div>
+	</div>  
+  	
+ <div class="clear"></div> 
+</div>
+ [#include "../include/footer.html"/]
+</body>
+</html>

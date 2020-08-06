@@ -1,0 +1,76 @@
+[#include "../include/toplink.html" /]
+<script src="${mobileRes}/js/jquery.min.js" type="text/javascript"></script>
+<body ng-controller="firstCtrl">
+[#include "../include/header.html" /]
+
+[#include "../include/toppic.html"]
+<div class="bk" style="border: none; min-height: 30px">
+ 
+ 	<h2 style="color: #ae000f;">尊敬的客户，您好！请简要输入您的问题，我会耐心为您解答。</h2>	
+ </div>
+<div class="bk">
+	<h2>常见问题</h2>
+<div class="row">
+  <div class="col"><a  onclick="getMatter()">个人金融<input type="hidden" id="a1" value="个人金融"></a></div>
+  <div class="col"><a  onclick="getMatter1()">企业金融<input type="hidden" id="a2" value="企业金融"></a></div>
+  <div class="col"><a  onclick="getMatter2()">金融市场<input type="hidden" id="a3" value="金融市场"></a></div>
+<div class="clear"></div>
+</div>
+</div>
+<form action="${base}/search.htm"  id="searchForm">
+    <div class="row" style="border:1px  solid #ad000d;border-right:none;margin:0px auto;padding:0px;width:95%;">
+    	<div class="col" style="margin:0px;padding:0px;" >      
+            <label class="item-input-wrapper">  
+                <input style="background:none;height:auto;line-height:25px;" id="searchValue" name="keyword" value="${oldq!'请输入关键词'}" type="text" onfocus="if(this.value=='请输入关键词')this.value=''"  onkeypress="qkeypress()" onblur="if(this.value=='')this.value='请输入关键词'" class="light-bg"  >  
+            </label>  
+        </div>
+    	<div class="col" style="margin:0px;padding:0px;">
+		<div class="button-bar bar-assertive " >
+			  	<input type="reset" style="background:#ad000d;border-right:none;" id="resetValue" class="button button-small" value="清空">
+			    <input type="button" style="background:#ad000d;" class="button button-small" value="查询">
+        </div>
+        </div>
+       </div>
+</form>
+</ion-content>
+[#include "../include/footer.html" /]
+[#include "../include/nav.html" /]
+</body>
+</html>
+<script>
+function getMatter(){
+      var data=$("#a1").val();
+      var getdata=$("#searchValue").val(data);
+      if(getdata!=null || getdata!=''){
+            $("#searchForm").submit();
+      }
+
+}
+
+function getMatter1(){
+     var data1=$("#a2").val();
+     var getdata1=$("#searchValue").val(data1);
+     if(getdata1!=null  || getdata1!=''){
+            $("#searchForm").submit();
+      }
+}
+
+function getMatter2(){
+     var data2=$("#a3").val();
+     var getdata2=$("#searchValue").val(data2);
+     if(getdata2!=null  || getdata2!=''){
+            $("#searchForm").submit();
+      }
+}
+
+</script>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

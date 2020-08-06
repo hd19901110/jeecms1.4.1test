@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="ROOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="jeecms-common-x1.4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeecms-common/jeecms-common">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jeecms-component-x1.4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeecms-component/jeecms-component">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jeecms-mq-thread-x1.4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeecms-mq-thread/jeecms-mq-thread">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jeecms-lucene-x1.4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeecms-lucene/jeecms-lucene">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jeecms-form-x1.4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeecms-form/jeecms-form">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jeecms-admin-x1.4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/jeecms-admin/jeecms-admin">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="ROOT"/>
+        <property name="java-output-path" value="/jeecms-front/target/classes"/>
+    </wb-module>
+</project-modules>

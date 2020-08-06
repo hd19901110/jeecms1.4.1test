@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>包头农商银行</title>
+<link href="${res}/css/kf.css" rel="stylesheet" type="text/css">
+ <script>
+//delay延迟时间（毫秒）
+
+	$("input[name=q]").autocomplete({
+		 source: "${base}/search/v_ajax_list.jspx",
+		 minLength: 2,
+		 max:5,
+		 delay:400,
+		 autoFocus: true,
+		 select: function(e, ui) {
+			 $("input[name='q']").val(ui.item.value);
+			 $("#searchForm").submit();
+		 }
+	});
+function qkeypress(){
+	var q=$("input[name=q]");
+	if(q.val().trim()!=""){
+		$("input[name=q]").autocomplete("enable");
+	}else{
+		$("input[name=q]").autocomplete("disable");
+	}
+}
+
+
+
+</script>
+</head>
+
+<body>
+<div class="ns_kf_k">
+	<div class="ns_kf_k01">
+		<h2></h2>
+		<span class="gd"><a href="${base}/wlkf/index.jhtml">首页</a> <a href="javascript:history.go(-1)">返回</a></span>
+	</div>
+	<div class="ns_kf_k02">
+		<div class="ns_kf_k03" style="margin-top: 0px; height: 270px;">
+                    [#if q??]
+  		    [@cms_lucene_page q=q channelId=channelId descLen='100' append='...' count='7']
+	  		<h4>以下是您关注的问题，请点击查看</h4>
+		  <ul class="ns_kf_k08">
+		  [#list tag_list as s]
+				<li><span class="data">·<a href="${s.ctgUrl}" target="_blank">${s.title?replace('${q!}', "${q!}")}  </a></span><span class="date"> ${s.releaseDate} </span></li>
+                   [/#list]
+             <div style="clear:both"></div>
+            <div class="pagesite"></div>
+            [#include "../include/page.html"]
+            [/@cms_lucene_page]	
+            [/#if]  
+		  </ul>
+		</div>
+	  <div class="ns_kf_k04">
+	     <form action="${base}/search.jspx" id="searchForm">
+			<input type="text" name="q" id="searchValue" value=""  class="ns_kf_k05">
+		  	<input type="reset" id="resetValue" class="ns_kf_k06" value="清空">
+		    <input type="submit" class="ns_kf_k06" value="发送">
+		  </form>
+	  </div>
+	</div>
+</div>
+</body>
+</html>

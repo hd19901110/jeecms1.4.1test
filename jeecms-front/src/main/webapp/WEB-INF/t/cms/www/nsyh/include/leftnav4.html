@@ -1,0 +1,159 @@
+<div class="ns_list_left">
+	<h2>
+		[#if channel.parent.parent?exists] 
+		[#if channel.parent.parent.parent?exists] 
+                [#if channel.parent.parent.parent.parent?exists] 
+		[#else]
+			<a href="${channel.parent.parent.parent.url}">${channel.parent.parent.parent.name}</a>
+		[/#if]
+		[#else]
+
+			<a href="${channel.parent.parent.url}">${channel.parent.parent.name}</a>
+
+		[/#if]
+                [#else]
+			<a href="${channel.parent.url}"> ${channel.parent.name}</a>
+		[/#if]
+
+	</h2>
+
+<div class="ns_list_lefta">
+	<div class="list">
+	<ul class="yiji">
+        
+        [#if channel.parent.parent?exists] 
+        [#if channel.parent.parent.parent?exists] 
+        [#if channel.parent.parent.parent.parent?exists] 
+        [#else]
+ 
+		[@cms_channel_list parentId=channel.parent.parent.parent.id]
+	            [#list tag_list as c] 
+	             	[#if c.child?size>0]    
+	                <li><a class="inactive" >${c.name}</a>
+	            	[#else]
+	                 <li><a href="${c.url}" class="inactive">${c.name}</a>
+	            	[/#if]
+	              	<ul [#if  c.id=channel.parent.parent.id]style="display: block"[#else]style="display: none"[/#if] >
+	                    [@cms_channel_list parentId=c.id] 
+	                        [#list tag_list as c1] 
+	                        [#if  c1.child?size>0]
+		                             
+	                        	<li><a class="inactive active">${c1.name}</a>
+	
+					 		[#else]
+					    		<li><a href="${c1.url}" class="inactive active">${c1.name}</a>
+							[/#if]
+	                        [#if c1??] 
+	                            <ul [#if  c1.id=channel.parent.id]style="display: block"[#else]style="display: none"[/#if] >
+	                            [@cms_channel_list parentId=c1.id] 
+	                                [#list tag_list as c2] 
+	                                   
+	                                    
+                                               <li><a href="${c2.url}" class="inactive active">•&nbsp;${c2.name}</a></li>
+                                            
+	                                [/#list]
+	                            [/@cms_channel_list] 
+	                                         
+								</ul>
+								</li>
+	                        [/#if]
+	                        [/#list] 
+	                        [/@cms_channel_list] 
+					
+					</ul>
+					</li>
+	            [/#list] 
+	        [/@cms_channel_list] 
+	     
+
+
+        [/#if] 
+        [#else] 
+
+			[@cms_channel_list parentId=channel.parent.parent.id]
+	            [#list tag_list as c] 
+	             	[#if c.child?size>0]
+	                <li><a class="inactive"  >${c.name}</a>
+	            	[#else]
+	                 <li><a href="${c.url}" class="inactive">${c.name}</a>
+	            	[/#if]
+	              	<ul  [#if  c.id=channel.parent.id]style="display: block"[#else]style="display: none"[/#if]>
+	                    [@cms_channel_list parentId=c.id] 
+	                        [#list tag_list as c1] 
+	                        [#if  c1.child?size>0]
+		                             
+	                        	<li><a class="inactive active">${c1.name}</a>
+	
+					 		[#else]
+					    		<li><a href="${c1.url}" class="inactive active">${c1.name}</a>
+							[/#if]
+	                        [#if c1??] 
+	                            <ul [#if  c1.id=channel.id]style="display: block"[#else]style="display: none"[/#if]>
+	                            [@cms_channel_list parentId=c1.id] 
+	                                [#list tag_list as c2] 
+	      
+	                                 
+	                                  
+                                               <li><a href="${c2.url}" class="inactive active">•&nbsp;${c2.name}</a></li>
+                                           
+	                                        
+	                                [/#list]
+	                            [/@cms_channel_list] 
+	                                         
+								</ul>
+								</li>
+	                        [/#if]
+	                        [/#list] 
+	                        [/@cms_channel_list] 
+					
+					</ul>
+					</li>
+	            [/#list] 
+	        [/@cms_channel_list]
+		[/#if]
+        [#else] 
+               [@cms_channel_list parentId=channel.parent.id]
+	            [#list tag_list as c] 
+	             	[#if c.child?size>0]
+	                <li><a class="inactive">${c.name}</a>
+	            	[#else]
+	                 <li><a href="${c.url}" class="inactive">${c.name}</a>
+	            	[/#if]
+	              	<ul style="display: none" [#if  c.id=channel.id]style="display: block"[#else]style="display: none"[/#if]>
+	                    [@cms_channel_list parentId=c.id] 
+	                        [#list tag_list as c1] 
+	                        [#if  c1.child?size>0]
+		                             
+	                        	<li><a class="inactive active">${c1.name}</a>
+	
+					 		[#else]
+					    		<li><a href="${c1.url}" class="inactive active">${c1.name}</a>
+							[/#if]
+	                        [#if c1??] 
+	                            <ul [#if  c1.id=channel.id]style="display: block"[#else]style="display: none"[/#if]>
+	                            [@cms_channel_list parentId=c1.id] 
+	                                [#list tag_list as c2] 
+	      
+	                                   
+                                               <li><a href="${c2.url}" class="inactive active">•&nbsp;${c2.name}</a></li>
+                             
+	                                [/#list]
+	                            [/@cms_channel_list] 
+	                                         
+								</ul>
+								</li>
+	                        [/#if]
+	                        [/#list] 
+	                        [/@cms_channel_list] 
+					
+					</ul>
+					</li>
+	            [/#list] 
+	        [/@cms_channel_list]
+           [/#if]
+	</ul>
+
+        
+</div>
+</div>
+</div>

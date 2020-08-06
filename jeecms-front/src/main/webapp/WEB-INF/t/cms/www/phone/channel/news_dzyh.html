@@ -1,0 +1,97 @@
+[#include "../include/toplink.html"]
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html"]
+
+[#include "../include/toppic.html"]
+<h4 class="light assertive-bg" style="margin: 0px 0px; font-size: 14px; line-height: 30px; padding-left: 10px;">电子银行</h4>  
+    <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/wsyx.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-21 color01" style="font-size: 50px;"></i>
+    		<p>网上银行</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/sjyx.jhtml">
+    	<i class="icon  iconfont icon-jinrongleiicontubiao-22 color02" style="font-size: 50px;"></i>
+    		<p>手机银行</p>
+    			</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+   	  	<a href="${base}/dhyx.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-5 color03" style="font-size: 50px;"></i>
+    		<p>电话银行</p>
+    			</a>
+    	</div>
+    
+    
+   	<div class="col">
+   		  	<a href="${base}/dxyx.jhtml">
+    	<i class="icon iconfont icon iconfont icon-duanxin color04" style="font-size: 54px;"></i>
+    		<p>短信银行</p>
+    			</a>
+    	</div>
+	
+	
+ </div> 
+    <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/wxyx.jhtml">
+    	<i class="icon iconfont icon-weixinzhifu color03" style="font-size: 50px;"></i>
+    		<p>微信银行</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/zzyx.jhtml">
+    	<i class="icon iconfont icon-jinrongfuwuhuiyuan color01" style="font-size: 50px;"></i>
+    		<p>自助银行</p>
+    			</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+   	  	<a href="${base}/zxzf.jhtml">
+    	<i class="icon iconfont icon-yinlian color04" style="font-size: 50px;"></i>
+    		<p>在线支付</p>
+    			</a>
+    	</div>
+    
+    
+   	<div class="col">
+   		  	<a href="${base}/xgxz.jhtml">
+    	<i class="icon iconfont  icon-xiazai color02" style="font-size: 50px;"></i>
+    		<p>相关下载</p>
+    			</a>
+    	</div>
+	
+	
+ </div> 
+               
+</ion-content>
+[#include "../include/footer.html"]
+[#include "../include/nav.html" /]
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

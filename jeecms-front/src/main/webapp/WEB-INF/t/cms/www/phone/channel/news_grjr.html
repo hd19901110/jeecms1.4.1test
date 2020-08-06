@@ -1,0 +1,98 @@
+[#include "../include/toplink.html" /]
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html"]
+
+[#include "../include/toppic.html"]
+<h4 class="light assertive-bg" style="margin: 0px 0px; font-size: 14px; line-height: 30px; padding-left: 10px;">个人金融</h4>  
+    <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/cx.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-28 color01" style="font-size: 50px;"></i>
+    		<p>储蓄</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/dk.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-9 color02" style="font-size: 50px;"></i>
+    		<p>贷款</p>
+    			</a>
+    	</div>
+	
+
+   	<div class="col bdr-r">
+   	  	<a href="${base}/lc.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-24 color03" style="font-size: 50px;"></i>
+    		<p>理财</p>
+    			</a>
+    	</div>
+    
+    
+   	<div class="col">
+   		<a href="${base}/gjs.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-7 color04" style="font-size: 50px;"></i>
+    		<p>贵金属</p>
+    			</a>
+    	</div>
+	
+	
+ </div> 
+   <div class="row bdr-bottom pa" style="margin-top: 0px;">
+  
+    	<div class="col bdr-r">
+    	  <a href="${base}/bx.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-21 color03" style="font-size: 50px;"></i>
+    		<p>保险</p>
+    			</a>
+    	</div>
+    
+    
+    
+    
+   	<div class="col bdr-r">
+   		<a href="${base}/bljr.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-10 color01" style="font-size: 50px;"></i>
+    		<p>便利金融</p>
+    			</a>
+    	</div>
+	
+
+   	    <div class="col bdr-r">
+   	  	<a href="${base}/nxyyw.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-1 color02" style="font-size: 50px;"></i>
+    		<p>农信银业务</p>
+    	</a>
+    	</div>
+
+<div class="col bdr-r">
+   	  	<a href="${base}/fxqzs.jhtml">
+    	<i class="icon iconfont icon-jinrongleiicontubiao-28 color01" style="font-size: 50px;"></i>
+    		<p>反洗钱知识</p>
+    	</a>
+    	</div>
+    
+    
+   
+	
+	
+ </div>      
+</ion-content>
+[#include "../include/footer.html" /]
+[#include "../include/nav.html" /]
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

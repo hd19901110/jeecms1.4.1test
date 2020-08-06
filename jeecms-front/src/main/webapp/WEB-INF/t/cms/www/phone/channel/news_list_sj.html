@@ -1,0 +1,153 @@
+<!doctype html>
+<html ng-app="myApp">
+<head>
+<meta charset="utf-8">
+<title>包头农商银行</title>
+	<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width">
+	<link href="${mobileRes!}/css/mui.min.css" rel="stylesheet" type="text/css">
+	<script src="${mobileRes!}/js/ionic.bundle.min.js"></script>
+	<link rel="stylesheet" href="${mobileRes!}/css/demo.css">
+	<link rel="stylesheet" type="text/css" href="${mobileRes!}/css/ionic.min.css">
+	<link rel="stylesheet" type="text/css" href="${mobileRes!}/css/style.css">
+   <link rel="stylesheet" type="text/css" href="${mobileRes!}/css/swiper.min.css">
+    <style type="text/css">  
+        ion-slide{  
+            text-align:center;
+	
+        }  
+  
+        ion-slide img{  
+            width: 100%;
+		
+        }  
+  
+
+			.mui-control-content {
+				
+				min-height: 300px;
+			}
+			.mui-control-content .mui-loading {
+				margin-top: 50px;
+			}
+	 .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        
+        /* Center slide text vertically */
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+   .swiper-slide img{
+      width:100%;
+      height:auto;
+}
+
+    </style>
+    <link href="/${mobileRes!}/css/iconfont.css" rel="stylesheet" type="text/css">
+
+</head>
+
+
+<body ng-controller="firstCtrl">
+[#include "../include/header.html" /]
+[#include "../include/toppic.html"]
+				<div class="mui-content">
+			<div id="slider" class="mui-slider">
+				<div id="sliderSegmentedControl" class=" mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
+		<div class="mui-scroll">
+					
+					
+				</div>
+				</div>
+		
+				<div class="mui-slider-group">
+                                     
+							<div id="item1mobile" class="mui-slider-item mui-control-content mui-active">
+								<div id="scroll1" class="mui-scroll-wrapper">
+									<div class="mui-scroll">
+												<h4  style="margin: 0px 0px; font-size: 14px; line-height: 30px; padding-left: 10px;">${channel.name}</h4>  
+										<ul class="list">
+											[@cms_content_list count='10' titLen='15' orderBy='9' channelOption='1' channelId=channel.id]
+												[#list tag_list as a]
+											<a href="${a.url}"><li class="item item-thumbnail-left">
+										    <img src="${a.typeImg!site.defImg}"/>
+										    <h2>[@text_cut s=a.title len=titLen append=append /]</h2>  
+										     <p>[@text_cut s=a.description len=130 append='...'/]</p>  
+										    </li></a>
+										    [/#list]
+  											[/@cms_content_list]
+										     
+										</ul>
+									</div>
+								</div>
+                                                              
+							</div>
+					 	
+					
+				</div>
+			</div>
+	</div>
+</ion-content>
+[#include "../include/footer.html" /]
+[#include "../include/nav.html" /]
+	<script src="/${mobileRes!}/js/mui.min.js"></script>
+	<script>
+			mui.init({
+				swipeBack: false
+			});
+			(function($) {
+				$('.mui-scroll-wrapper').scroll({
+					indicators: true //是否显示滚动条
+				});
+				var html2 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第二个选项卡子项-1</li><li class="mui-table-view-cell">第二个选项卡子项-2</li><li class="mui-table-view-cell">第二个选项卡子项-3</li><li class="mui-table-view-cell">第二个选项卡子项-4</li><li class="mui-table-view-cell">第二个选项卡子项-5</li></ul>';
+				var html3 = '<ul class="mui-table-view"><li class="mui-table-view-cell">第三个选项卡子项-1</li><li class="mui-table-view-cell">第三个选项卡子项-2</li><li class="mui-table-view-cell">第三个选项卡子项-3</li><li class="mui-table-view-cell">第三个选项卡子项-4</li><li class="mui-table-view-cell">第三个选项卡子项-5</li></ul>';
+				var item2 = document.getElementById('item2mobile');
+				var item3 = document.getElementById('item3mobile');
+				document.getElementById('slider').addEventListener('slide', function(e) {
+					if (e.detail.slideNumber === 1) {
+						if (item2.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item2.querySelector('.mui-scroll').innerHTML = html2;
+							}, 500);
+						}
+					} else if (e.detail.slideNumber === 2) {
+						if (item3.querySelector('.mui-loading')) {
+							setTimeout(function() {
+								item3.querySelector('.mui-scroll').innerHTML = html3;
+							}, 500);
+						}
+					}
+				});
+				var sliderSegmentedControl = document.getElementById('sliderSegmentedControl');
+				$('.mui-input-group').on('change', 'input', function() {
+					if (this.checked) {
+						sliderSegmentedControl.className = 'mui-slider-indicator mui-segmented-control mui-segmented-control-inverted mui-segmented-control-' + this.value;
+						//force repaint
+						sliderProgressBar.setAttribute('style', sliderProgressBar.getAttribute('style'));
+					}
+				});
+			})(mui);
+		</script>
+</body>
+</html>
+<script>
+	angular.module("myApp",["ionic"])
+			.controller("firstCtrl",function($scope){
+				$scope.items = [];
+				for(var i=0;i<20;i++)
+					$scope.items.push("line " + i);
+			})
+
+
+</script>

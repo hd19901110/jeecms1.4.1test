@@ -1,0 +1,89 @@
+[#include "../include/toplink.html"/]
+<body>
+[#include "../include/header.html"/]
+<div class="ns_list_content">
+	<div class="ns_list_contenta">
+	<div id="owl-demo" class="owl-carousel">
+	<a class="item" href="#" target="_blank"><img src="/${res}/images/01a.jpg" alt=""><b></b><span>麻利贷.三天放款免手续费</span></a>
+	<a class="item" href="#" target="_blank"><img src="/${res}/images/01.jpg" alt=""><b></b><span>乐赢理财.定期储蓄 理财收益"</span></a>
+
+</div>	
+<div class="ns_list_left">
+  <img src="images/ns_12.jpg" width="260" height="379" alt=""/> </div>
+<div class="ns_list_right">
+	<div class="ns_list_righta">
+		<h2>您现在的位置 ：<a href="#">首页</a> > 预约咨询</h2>
+		<h2 style="float: right; margin-right: 15px;">&lt;&lt;</h2>
+		<div class="clear"></div>
+	</div>
+	<div class="nw_zx">
+		<table width="200" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <th width="105">称呼：</th>
+      <td colspan="2">
+        <input type="text" name="textfield" id="textfield"><span class="color">*</span></td>
+    </tr>
+    <tr>
+      <th>手机：</th>
+      <td colspan="2"> <input type="text" name="textfield" id="textfield"><span class="color">*</span></td>
+    </tr>
+    <tr>
+      <th>业务类型：</th>
+      <td colspan="2">
+        <select name="select" id="select">
+          <option>请选择</option>
+        </select><span class="color">*</span></td>
+    </tr>
+    <tr>
+      <th> 电子邮件：</th>
+      <td colspan="2"><input type="text" name="textfield2" id="textfield2"></td>
+    </tr>
+    <tr>
+      <th>预期回电：</th>
+      <td colspan="2"><input type="text" name="textfield3" id="textfield3"></td>
+    </tr>
+    <tr>
+      <th valign="top">备注：</th>
+      <td colspan="2">
+        <textarea name="textarea" id="textarea" cols="45" rows="5"></textarea></td>
+    </tr>
+    <tr>
+      <th>验证码：</th>
+      <td width="216"><input type="text" name="textfield4" id="textfield4" style="width: 200px;"></td>
+      <td width="429">放验证码</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td colspan="2"><a href="#"><img src="images/ns_13.jpg" width="138" height="37" alt=""/></a><a href="#"><img style="margin-left: 10px;" src="/${res}/images/ns_14.jpg" width="138" height="37" alt=""/></a></td>
+    </tr>
+  </tbody>
+</table>
+
+	</div>
+</div>
+<div class="clear"></div>
+	</div>
+</div>
+
+[#include "../include/footer.html" /]
+
+<script type="text/javascript">
+$(".leftsidebar_box dt").css({"background":"images/ht_01.jpg"});
+$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+$(function(){
+	$(".leftsidebar_box dd").hide();
+	$(".leftsidebar_box dt").click(function(){
+		$(".leftsidebar_box dt").css({"background":"images/ht_01.jpg"})
+		$(this).css({"background":"images/ht_01.jpg"});
+		$(this).parent().find('dd').removeClass("menu_chioce");
+		$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+		$(this).parent().find('img').attr("src","images/left/select_xl.png");
+		$(".menu_chioce").slideUp(); 
+		$(this).parent().find('dd').slideToggle();
+		$(this).parent().find('dd').addClass("menu_chioce");
+	});
+})
+</script>
+</body>
+</html>

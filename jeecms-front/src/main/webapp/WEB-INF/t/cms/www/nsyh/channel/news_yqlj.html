@@ -1,0 +1,36 @@
+[#include "../include/toplink.html" /]
+<style>
+.ns_list_rightc p{font-size:14px;text-indent:0em;} 
+.ns_list_rightc p a{color:#fff;text-decoration: none;display:block;background:#ff7843; line-height:35px; padding:0px 15px;float:left;margin:5px ;}
+</style>
+<body>
+[#include "../include/header.html" /]
+<div class="ns_list_content">
+	<div class="ns_list_contenta">
+	
+
+<div class="ns_list_right" style="width:1100px;min-height:600px;">
+	<div class="ns_list_righta" style="width:1098px;">
+		<h2>您现在的位置 ：<a href="#">首页</a> > [#list channel.nodeList as n]<a href="${n.url}" target="_blank">${n.name}</a>[#if n_has_next] > [/#if][/#list]</h2>
+		<h2 style="float: right; margin-right: 15px;">&lt;&lt;</h2>
+		<div class="clear"></div>
+	</div>
+	<div class="ns_list_rightc">
+		<p>
+                   <a href="http://www.nmgnxs.com.cn/zzqnxs">内蒙古农村信用社</a>
+                   <a href="http://www.china-cba.net/">中国银行业协会</a>
+                   <a href="http://www.cbrc.gov.cn/index.html">中国银行业监管管理委员会</a>
+                   <a href="http://www.pbc.gov.cn/">中国人民银行</a>
+                  <a href="http://www.baotounews.com.cn/">包头新闻网</a>
+                 <a href="http://www.xinhuanet.com/">新华网</a>
+</p>
+               
+	</div>
+</div>
+<div class="clear"></div>
+	</div>
+</div>
+
+[#include "../include/footer.html" /]
+</body>
+</html>

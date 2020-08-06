@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: jeecms-mq-thread
+Implementation-Version: x1.4.1
+Built-By: zhaohuis
+Implementation-Vendor-Id: com.jeecms
+Build-Jdk: 1.8.0_161
+Implementation-URL: http://www.jeecms.com
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,82 @@
+[#include "../include/toplink.html" /]
+<script src="${res}/ckplayer/ckplayer.js" type="text/javascript"></script>
+<script src="${res}/ckplayer/offlights.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function() {
+Cms.attachment("${base}","${content.id}","${content.attachments?size}","attach");
+Cms.viewCount("${base}","${content.id}");
+Cms.siteFlow("${base}", location.href, document.referrer);
+});
+</script>
+<body>
+[#include "../include/header.html" /]
+<div class="ns_list_content">
+	<div class="ns_list_contenta">
+	
+
+<div class="ns_list_right" style="width:1100px;">
+	<div class="ns_list_righta" style="width:1098px;">
+		<h2>您现在的位置 ：<a href="#">首页</a> > [#list content.channel.nodeList as n]<a target="_blank" href="${n.url}"
+					 class="black Semilight">${n.name}</a>[#if n_has_next] >
+					[/#if][/#list] ></h2>
+		<h2 style="float: right; margin-right: 15px;">&lt;&lt;</h2>
+		<div class="clear"></div>
+	</div>
+	<h3>${content.title}</h3>
+	<h3 style="color: #8b8b8b; font-size: 12px; border-bottom: #cfcfcf dashed 1px;">日期：${content.releaseTime!}　来源：${content.origin!'本站原创'}</h3>
+	<div class="ns_list_rightc">
+		[#if content.attr.media??&&content.attr.media.resUrl??]
+	        <p style="margin: 5px auto; text-align: center">
+	            <div id="video" style="position:relative;z-index: 100;width:960px;height:500px;float: left;"><div id="a1"></div></div>
+		    	<script type="text/javascript">
+		    	//函数名称不允许更改 function ckmarqueeadv(){return '广告内容'};
+				var flashvars={f:'${content.attr.media.resUrl!}',c:0,b:1,my_url:'${content.url!}',my_pic:'${content.typeImg!}'};
+				var params={bgcolor:'#FFF',allowFullScreen:true,allowScriptAccess:'always'};
+				CKobject.embedSWF('${res}/ckplayer/ckplayer.swf','a1','ckplayer_a1','980','500',flashvars,params);
+				var box = new LightBox();
+				function closelights(){//关灯
+					box.Show();
+				}
+				function openlights(){//开灯
+					box.Close();
+				}
+				</script>
+	        </p>
+    	[/#if]
+		<p>${txt!}</p>
+	</div>
+</div>
+<div class="clear"></div>
+	</div>
+</div>
+
+[#-- <!-- 视频模块 -->
+        <div class="video-list">
+            <video src="${content.attr.media.resUrl!}" autoplay controls width="1176" height="600"></video>
+        </div>
+        <div class="video-text Semilight">
+            ${content.description!}
+        </div> --]
+
+
+[#include "../include/footer.html" /]
+
+<script type="text/javascript">
+$(".leftsidebar_box dt").css({"background":"images/ht_01.jpg"});
+$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+$(function(){
+	$(".leftsidebar_box dd").hide();
+	$(".leftsidebar_box dt").click(function(){
+		$(".leftsidebar_box dt").css({"background":"images/ht_01.jpg"})
+		$(this).css({"background":"images/ht_01.jpg"});
+		$(this).parent().find('dd').removeClass("menu_chioce");
+		$(".leftsidebar_box dt img").attr("src","images/left/select_xl01.png");
+		$(this).parent().find('img').attr("src","images/left/select_xl.png");
+		$(".menu_chioce").slideUp(); 
+		$(this).parent().find('dd').slideToggle();
+		$(this).parent().find('dd').addClass("menu_chioce");
+	});
+})
+</script>
+</body>
+</html>
