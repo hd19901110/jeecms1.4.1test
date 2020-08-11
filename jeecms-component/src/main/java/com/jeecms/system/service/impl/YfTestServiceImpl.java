@@ -11,5 +11,5 @@ import com.jeecms.system.service.YfTestService;
 @Service
 @Transactional(rollbackFor = Exception.class)
 public class YfTestServiceImpl extends BaseCacheServiceImpl<YfTest, YfTestDao, Integer>implements YfTestService{
-
+        
 }
