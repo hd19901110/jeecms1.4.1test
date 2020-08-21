@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 import org.hibernate.validator.constraints.Length;
@@ -29,7 +30,7 @@ public class YfTest extends AbstractDomain<Integer>{
 	/**年龄*/
 	private Integer age;
 	/**性别*/
-	private String sex;
+	private Short sex;
 	/**身高*/
 	private String  height; 
 	/**体重*/
@@ -58,7 +59,7 @@ public class YfTest extends AbstractDomain<Integer>{
 	public void setName(String name) {
 		this.name = name;
 	}
-	@NotBlank
+	@Min(0) 
 	@Column(name="age", nullable=false)
 	public Integer getAge() {
 		return age;
@@ -66,13 +67,12 @@ public class YfTest extends AbstractDomain<Integer>{
 	public void setAge(Integer age) {
 		this.age = age;
 	}
-	@NotBlank
-	@Length(max=3)
+	@Min(1)
 	@Column(name="sex", nullable=false, length=3)
-	public String getSex() {
+	public Short getSex() {
 		return sex;
 	}
-	public void setSex(String sex) {
+	public void setSex(Short sex) {
 		this.sex = sex;
 	}
 	@NotBlank

@@ -1,5 +1,6 @@
 package com.jeecms.admin.controller.system;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.data.domain.Pageable;
@@ -22,11 +23,19 @@ import com.jeecms.system.domain.YfTest;
 @RestController
 public class YftestController extends BaseController<YfTest, Integer>{
 
+	@PostConstruct
+	public void init() {
+		String[] queryParams = { "name_LIKE", "sex_EQ","age_EQ" };
+		super.setQueryParams(queryParams);
+	}
+	
+	
+	
 	/**
-	 * api列表含分页
+	 * 测试列表含分页
 	 */
 	@RequestMapping(value = "/page", method = RequestMethod.GET)
-	@MoreSerializeField({ @SerializeField(clazz = YfTest.class) })
+	@MoreSerializeField({ @SerializeField(clazz = YfTest.class, includes = {"id","name","sex","age","weight","height"} ) })
 	public ResponseInfo page(HttpServletRequest request,
 			@PageableDefault(sort = "id", direction = Direction.DESC) 
 		Pageable pageable) throws GlobalException {
@@ -38,7 +47,7 @@ public class YftestController extends BaseController<YfTest, Integer>{
 	/**
 	 * 添加
 	 */
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
+	@RequestMapping(method = RequestMethod.POST)
 	@Override
 	public ResponseInfo save(@RequestBody @Valid YfTest yftest, BindingResult result) throws GlobalException {
 		super.validateBindingResult(result);
