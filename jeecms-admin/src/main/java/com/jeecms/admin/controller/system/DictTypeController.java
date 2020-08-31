@@ -68,7 +68,7 @@ public class DictTypeController extends BaseController<DictType, Integer> {
 		paginable.setSort(new Sort(Direction.ASC, "sortNum"));
 		return super.getList(request, paginable, false);
 	}
-
+	
 	@RequestMapping(value = "/get", method = RequestMethod.GET)
 	@MoreSerializeField({ @SerializeField(clazz = DictType.class, excludes = { "datas" }) })
 	@Override

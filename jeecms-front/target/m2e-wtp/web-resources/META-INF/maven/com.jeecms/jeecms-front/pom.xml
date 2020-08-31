@@ -58,13 +58,13 @@
 		</dependency>
 		<!-- 快速启动启动应用，类似热部署 -->
 		<!-- xstream 暂不支持  -->
-		<!-- 
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
-		 -->
+		
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
 			<artifactId>tomcat-juli</artifactId>

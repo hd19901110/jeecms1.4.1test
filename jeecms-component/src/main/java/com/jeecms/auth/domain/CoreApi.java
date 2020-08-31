@@ -166,4 +166,15 @@ public class CoreApi extends AbstractDomain<Integer> implements Serializable {
                 this.menus = menus;
         }
 
+		@Override
+		public String toString() {
+			return "CoreApi [id=" + id + ", apiName=" + apiName + ", perms=" + perms + ", apiUrl=" + apiUrl
+					+ ", requestMethod=" + requestMethod + ", useScene=" + useScene + ", sortNum=" + sortNum
+					+ ", menus=" + menus + "]";
+		}
+
+        
+        
+        
+        
 }

@@ -19,7 +19,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
